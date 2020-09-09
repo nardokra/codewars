@@ -1,16 +1,39 @@
-function solve(arr){
-  const white = arr[0];
-  const green = arr[1];
-  const black = arr[2];
-  const highestColor;
-  const lowestColor = (white, green, black) => {
-    if(white <= green && white <= black){
-      return white;
-    } else if( ){
+// Name: Casino chips
 
+function solve(arr){
+  let white = arr[0];
+  let green = arr[1];
+  let black = arr[2];
+  let end = false;
+  let count = 0;
+
+  while(end == false){
+    debugger
+    if (white >= green && white >= black && green >= black){
+      white -= 1;
+      green -= 1;
+    } else if (green >= white && green >= black && white >= black){
+      green -= 1;
+      white -= 1;
+    } else if (black >= white && black >= green && white >= green){
+      black -= 1;
+      white -= 1;
+    } else if (white >= black && white >= green && black >= green){
+      white -= 1;
+      black -= 1;
+    } else if (green >= black && green >= white && black >= white){
+      green -= 1;
+      black -= 1;
+    } else{
+      green -= 1;
+      black -= 1;
+    }
+    count ++
+    if(white < 1 && black < 1 || white < 1 && green < 1 || green < 1 && black < 1){
+      end = true;
     }
   }
-
+  return count;
 }
 
 
